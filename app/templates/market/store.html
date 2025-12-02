@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-4">
+
+    <a href="{{ url_for('market.marketplace_home') }}" class="btn btn-light mb-3">&larr; Back</a>
+
+    <div class="d-flex align-items-center mb-4">
+        <img src="{{ store.logo_url }}" height="50" class="me-3 rounded">
+        <h2 class="fw-bold">{{ store.name }}</h2>
+    </div>
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col-6 col-md-3 mb-3">
+            <a href="{{ url_for('market.view_product', product_id=product.id) }}"
+               class="text-decoration-none text-dark">
+                <div class="card shadow-sm">
+                    <img src="{{ product.image_url }}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <div class="fw-semibold small">{{ product.name }}</div>
+                        <div class="fw-bold mt-1">R{{ "%.2f"|format(product.price) }}</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

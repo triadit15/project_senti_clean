@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}All Users{% endblock %}
+
+{% block content %}
+<h3 class="mb-3">Users</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Phone</th>
+      <th>Wallet</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+    <tr>
+      <td>{{ u.id }}</td>
+      <td>{{ u.phone }}</td>
+      <td>R{{ "%.2f"|format(u.wallet_balance) }}</td>
+      <td>{{ "Yes" if u.is_admin else "No" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{{ url_for('main.admin_home') }}" class="btn btn-primary w-100 mt-3">Back</a>
+{% endblock %}

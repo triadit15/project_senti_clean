@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Admin Dashboard</h2>
+
+    <div class="row mt-4">
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center shadow">
+                <h4>{{ total_users }}</h4>
+                <p>Total Users</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center shadow">
+                <h4>{{ total_vouchers }}</h4>
+                <p>Total Vouchers</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center shadow">
+                <h4>{{ total_payments }}</h4>
+                <p>Total Payments</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card p-3 text-center shadow">
+                <h4>R {{ total_balance }}</h4>
+                <p>Total Wallet Balances</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

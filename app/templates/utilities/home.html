@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="mb-4">Buy Utilities</h3>
+
+<div class="list-group">
+
+  <a href="{{ url_for('utility.utility_form', category='mobile') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+    <span class="me-3 fs-4">📱</span>
+    <div>
+      <strong>Mobile</strong><br>
+      <small>Buy airtime or data</small>
+    </div>
+  </a>
+
+  <a href="{{ url_for('utility.utility_form', category='electricity') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+    <span class="me-3 fs-4">⚡</span>
+    <div>
+      <strong>Electricity</strong><br>
+      <small>Prepaid tokens</small>
+    </div>
+  </a>
+
+  <a href="{{ url_for('utility.utility_form', category='vouchers') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+    <span class="me-3 fs-4">🎁</span>
+    <div>
+      <strong>Digital Vouchers</strong><br>
+      <small>Netflix, Spotify, Uber & more</small>
+    </div>
+  </a>
+
+  <a href="{{ url_for('utility.utility_form', category='lotto') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+    <span class="me-3 fs-4">🎟</span>
+    <div>
+      <strong>Lotto</strong><br>
+      <small>Play PowerBall & Lotto</small>
+    </div>
+  </a>
+
+</div>
+
+{% endblock %}

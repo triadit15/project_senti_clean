@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Profile — Senti{% endblock %}
+
+{% block content %}
+<h3 class="fw-bold mb-4">Profile</h3>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+    <p><strong>Wallet:</strong> R{{ "%.2f"|format(user.wallet_balance or 0) }}</p>
+    <p><strong>Created:</strong> {{ user.created_at.strftime("%Y-%m-%d") }}</p>
+  </div>
+</div>
+
+{% endblock %}

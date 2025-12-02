@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Payments — Senti{% endblock %}
+
+{% block content %}
+<h3 class="fw-bold mb-4">My Payment Requests</h3>
+
+{% if payments|length == 0 %}
+<div class="text-center text-muted py-4">No payments yet.</div>
+{% else %}
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in payments %}
+    <tr>
+      <td>{{ p.code }}</td>
+      <td>R{{ "%.2f"|format(p.amount) }}</td>
+      <td>{{ p.status }}</td>
+      <td>{{ p.created_at.strftime("%Y-%m-%d") }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

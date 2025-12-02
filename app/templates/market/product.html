@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-4">
+
+    <a href="{{ url_for('market.view_store', store_id=product.store_id) }}" class="btn btn-light mb-3">&larr; Back</a>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <img src="{{ product.image_url }}" class="img-fluid rounded shadow-sm">
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="fw-bold">{{ product.name }}</h2>
+            <h3 class="text-success fw-bold">R{{ "%.2f"|format(product.price) }}</h3>
+
+            <p class="text-muted mt-3">{{ product.description }}</p>
+
+            <form method="POST" action="#">
+                <button class="btn btn-primary w-100 py-2 mt-3 disabled">
+                    Add to Cart (Coming Soon)
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Admin Dashboard</h2>
+
+    <div class="row g-3">
+
+        <div class="col-md-3">
+            <div class="dashboard-tile">
+                <h4>Total Users</h4>
+                <p>{{ total_users }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-tile">
+                <h4>Total Vouchers</h4>
+                <p>{{ total_vouchers }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-tile">
+                <h4>Total Payments</h4>
+                <p>{{ total_payments }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="dashboard-tile">
+                <h4>Total Wallet Balance</h4>
+                <p>R{{ total_balance }}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Back to User Dashboard</a>
+    </div>
+</div>
+
+{% endblock %}

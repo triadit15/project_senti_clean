@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container py-4">
+
+    <h2 class="mb-3 fw-bold">Senti Marketplace</h2>
+    <p class="text-muted">Shop from verified online stores using your Senti Wallet</p>
+
+    <!-- Categories -->
+    <h4 class="mt-4 fw-semibold">Browse Categories</h4>
+    <div class="row g-2 mb-4">
+        {% for c in categories %}
+        <div class="col-6 col-md-3">
+            <div class="card text-center p-3 shadow-sm">
+                <span class="fw-bold">{{ c }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Store list -->
+    <h4 class="fw-semibold mt-4">Featured Stores</h4>
+    <div class="row mt-2">
+        {% for store in stores %}
+        <div class="col-6 col-md-3 mb-3">
+            <a href="{{ url_for('market.view_store', store_id=store.id) }}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm p-2">
+                    <img src="{{ store.logo_url }}" class="img-fluid rounded" alt="Store Logo">
+                    <div class="mt-2 text-center fw-semibold">{{ store.name }}</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

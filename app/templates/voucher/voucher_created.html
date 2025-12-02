@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="text-center">Voucher Created</h3>
+
+    <div class="card p-3 mt-3">
+        <p><strong>Voucher Code:</strong> {{ voucher.code }}</p>
+        <p><strong>Amount:</strong> R {{ voucher.amount }}</p>
+
+        <img src="{{ qr_url }}" class="img-fluid mt-3" alt="QR Code">
+
+        <a class="btn btn-success w-100 mt-3" href="{{ redeem_url }}">
+            Redeem This Voucher
+        </a>
+
+        <a class="btn btn-primary w-100 mt-3" href="{{ url_for('main.merchant_voucher_list') }}">
+            Back to My Vouchers
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Redeem Voucher</h2>
+
+    <form action="{{ url_for('main.redeem_page') }}" method="POST" class="p-4 rounded shadow-sm bg-light">
+        <label for="code" class="form-label">Enter Voucher Code</label>
+        <input type="text" name="code" id="code" class="form-control mb-3" placeholder="Voucher Code" required>
+
+        <button class="btn btn-primary w-100">Continue</button>
+    </form>
+</div>
+{% endblock %}

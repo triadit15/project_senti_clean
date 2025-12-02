@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="mb-4 text-capitalize">Buy {{ category }}</h3>
+
+<form action="{{ url_for('utility.utility_buy', category=category) }}" method="POST">
+
+  <div class="mb-3">
+    <label class="form-label">Amount</label>
+    <input type="number" step="1" class="form-control" name="amount" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Details</label>
+    <input type="text" class="form-control" name="details" placeholder="Phone, meter number, voucher type..." required>
+  </div>
+
+  <button class="btn btn-primary w-100">Buy Now</button>
+</form>
+
+{% endblock %}

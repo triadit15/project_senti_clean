@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Scan QR{% endblock %}
+
+{% block content %}
+<h3 class="mb-3 text-center fw-bold">Scan QR Code</h3>
+
+<div class="card shadow-sm p-3">
+    <video id="cameraPreview" autoplay playsinline class="w-100 rounded border" style="max-height: 420px;"></video>
+
+    <div class="mt-3 text-center">
+        <button id="startCamBtn" class="btn btn-dark px-4">Start Camera</button>
+        <button id="stopCamBtn" class="btn btn-outline-dark px-4 ms-2">Stop</button>
+    </div>
+</div>
+
+<p class="text-muted small text-center mt-3">
+    Point your camera at a Senti QR code.
+</p>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+let stream = null;
+
+async function startCamera() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" },  // Back camera for phone
+            audio: false
+        });
+
+        const video = document.getElementById("cameraPreview");
+        video.srcObject = stream;
+
+    } catch (err) {
+        alert("Camera Access Failed: " + err.message);
+    }
+}
+
+function stopCamera() {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+    }
+}
+
+document.getElementById("startCamBtn").addEventListener("click", startCamera);
+document.getElementById("stopCamBtn").addEventListener("click", stopCamera);
+</script>
+{% endblock %}

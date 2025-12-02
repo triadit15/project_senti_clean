@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-3">Play Lotto (Demo Mode)</h2>
+
+<div class="card p-3">
+
+    <p class="text-muted">
+        This is a demo lottery page. In a real integration, Senti Wallet would allow safe PowerBall, Lotto, Daily Lotto purchases.
+    </p>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Choose Your Lotto Game</label>
+            <select class="form-select" name="game">
+                <option>PowerBall</option>
+                <option>Lotto</option>
+                <option>Daily Lotto</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Lucky Numbers (Comma Separated)</label>
+            <input class="form-control" name="numbers" placeholder="e.g. 5, 10, 27, 34, 49">
+        </div>
+
+        <button class="btn btn-dark w-100">Submit Ticket (Demo Only)</button>
+    </form>
+
+</div>
+
+{% endblock %}

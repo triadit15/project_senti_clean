@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Wallet Header -->
+<div class="text-center p-4 mb-4" style="background: linear-gradient(to right, #0066ff, #00aaff); color: white; border-radius: 8px;">
+    <h4 class="mb-1">Wallet Balance</h4>
+    <h2 class="fw-bold">R {{ balance }}</h2>
+</div>
+
+<!-- BUY UTILITIES -->
+<h4 class="mb-3">Buy Utilities</h4>
+
+<div class="list-group">
+
+    <!-- Mobile -->
+    <a href="{{ url_for('main.utility_mobile') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+        <span class="me-3 fs-3">📱</span>
+        <div>
+            <div class="fw-bold">Mobile</div>
+            <small>Buy airtime, data or SMS bundles</small>
+        </div>
+    </a>
+
+    <!-- Electricity -->
+    <a href="{{ url_for('main.utility_electricity') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+        <span class="me-3 fs-3">⚡</span>
+        <div>
+            <div class="fw-bold">Electricity</div>
+            <small>Buy prepaid electricity tokens</small>
+        </div>
+    </a>
+
+    <!-- Digital Vouchers -->
+    <a href="{{ url_for('main.utility_vouchers') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+        <span class="me-3 fs-3">🎟</span>
+        <div>
+            <div class="fw-bold">Digital Vouchers</div>
+            <small>Netflix, Spotify, Uber, 1Voucher & more</small>
+        </div>
+    </a>
+
+    <!-- Lotto -->
+    <a href="{{ url_for('main.utility_lotto') }}" class="list-group-item list-group-item-action d-flex align-items-center">
+        <span class="me-3 fs-3">🎰</span>
+        <div>
+            <div class="fw-bold">Lotto & PowerBall</div>
+            <small>Play Lotto safely using your Senti Wallet</small>
+        </div>
+    </a>
+
+</div>
+
+<hr class="mt-4 mb-3">
+
+<!-- TRANSACTIONS -->
+<h4 class="mb-3">Transactions</h4>
+
+{% if transactions %}
+    {% for t in transactions %}
+    <div class="p-2 border rounded mb-2 bg-white">
+        <strong>{{ t.type }}</strong> — R{{ t.amount }} <br>
+        <small class="text-muted">{{ t.date }}</small>
+    </div>
+    {% endfor %}
+{% else %}
+    <p class="text-muted">No transactions yet.</p>
+{% endif %}
+
+<!-- Transaction History Button -->
+<div class="text-end mt-3">
+    <a href="{{ url_for('main.transactions') }}" class="btn btn-outline-secondary">
+        View Transaction History
+    </a>
+</div>
+
+{% endblock %}

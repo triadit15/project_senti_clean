@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard-container">
+
+    <h2 class="mb-3">Welcome, {{ current_user.phone }}</h2>
+
+    <!-- Wallet balance card -->
+    <div class="wallet-card">
+        <h3>Wallet Balance</h3>
+        <p class="balance-amount">R {{ wallet }}</p>
+        <a href="{{ url_for('main.wallet') }}" class="btn btn-dark w-100">View Wallet</a>
+    </div>
+
+    <hr>
+
+    <!-- Action Grid -->
+    <div class="dashboard-grid">
+
+        <!-- Marketplace -->
+        <a href="{{ url_for('market.marketplace_home') }}" class="dashboard-tile">
+            <div class="icon">🛍</div>
+            <p>Marketplace</p>
+        </a>
+
+        <!-- Scan QR -->
+        <a href="{{ url_for('main.qr_scanner') }}" class="dashboard-tile">
+            <div class="icon">📷</div>
+            <p>Scan QR</p>
+        </a>
+
+        <!-- Manual Redeem -->
+        <a href="{{ url_for('main.redeem_page') }}" class="dashboard-tile">
+            <div class="icon">🎫</div>
+            <p>Redeem Voucher</p>
+        </a>
+
+        <!-- Create Voucher -->
+        <a href="{{ url_for('main.create_voucher') }}" class="dashboard-tile">
+            <div class="icon">➕</div>
+            <p>Create Voucher</p>
+        </a>
+
+        <!-- My Vouchers -->
+        <a href="{{ url_for('main.merchant_voucher_list') }}" class="dashboard-tile">
+            <div class="icon">📄</div>
+            <p>My Vouchers</p>
+        </a>
+
+        <!-- Create Merchant Payment -->
+        <a href="{{ url_for('main.create_merchant_payment') }}" class="dashboard-tile">
+            <div class="icon">💳</div>
+            <p>Create Payment</p>
+        </a>
+
+        <!-- Merchant Payment List -->
+        <a href="{{ url_for('main.merchant_payment_list') }}" class="dashboard-tile">
+            <div class="icon">📊</div>
+            <p>Payment History</p>
+        </a>
+
+        <!-- Profile -->
+        <a href="{{ url_for('main.profile') }}" class="dashboard-tile">
+            <div class="icon">👤</div>
+            <p>Profile</p>
+        </a>
+
+        <!-- Admin (if admin) -->
+        {% if current_user.is_admin %}
+        <a href="{{ url_for('main.admin_dashboard') }}" class="dashboard-tile admin-tile">
+            <div class="icon">🛠</div>
+            <p>Admin Panel</p>
+        </a>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
